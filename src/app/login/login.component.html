@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card login-content shadow">
+                <div class="text-center">
+                    <img class="logo"
+                        src="https://i.pinimg.com/originals/5a/39/a3/5a39a3632248da91c24de34a91a4bb42.png">
+                </div>
+                <form class="text-center" (ngSubmit)="onSubmit()" [formGroup]="userAuthForm">
+                    <input class="form-control border-0" type="email" name="email" ngModel email placeholder="Email"
+                        [class.is-invalid]="userAuthForm.get('email').invalid && submitted" class="form-control"
+                        formControlName="email">
+                    <div
+                        *ngIf="submitted==true && (userAuthForm.get('email').invalid || userAuthForm.get('email').dirty)">
+                        <small class="text-danger form-text" *ngIf="userAuthForm.get('email').errors?.required">
+                            Email address is required
+                        </small>
+                        <small class="text-danger form-text" *ngIf="userAuthForm.get('email').errors?.email">Email
+                            address is invalid</small>
+                    </div>
+                    <br>
+                    <input class="form-control border-0" type="password" name="password" placeholder="Password"
+                        [class.is-invalid]="userAuthForm.get('password').invalid && submitted" class="form-control"
+                        formControlName="password">
+                    <div
+                        *ngIf="submitted==true && (userAuthForm.get('password').invalid || userAuthForm.get('password').dirty)">
+                        <small class="text-danger form-text"
+                            *ngIf="userAuthForm.get('password').errors?.required">Password is required</small>
+                    </div>
+                    <br>
+                    <div class="form-group row g-0">
+                        <div class="col-6">
+                            <input class="form-control border-0" type="text" name="subdomain" placeholder="Subdomain"
+                                [class.is-invalid]="userAuthForm.get('subdomain').invalid && submitted"
+                                class="form-control form-control-2" formControlName="subdomain">
+                        </div>
+                        <div class="col-6">
+                            <input type="text" class="form-control form-control-2 domain" placeholder=".zendesk.com"
+                                disabled=true>
+                        </div>
+                    </div>
+                    <div
+                        *ngIf="submitted==true && (userAuthForm.get('subdomain').invalid || userAuthForm.get('subdomain').dirty)">
+                        <small class="text-danger form-text"
+                            *ngIf="userAuthForm.get('subdomain').errors?.required">Subdomain is required</small>
+                    </div>
+                    <br>
+                    <button class="btn btn-primary btn-sm" type="submit" name="submit">Connect</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
