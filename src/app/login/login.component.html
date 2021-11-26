@@ -28,7 +28,7 @@
                             *ngIf="userAuthForm.get('password').errors?.required">Password is required</small>
                     </div>
                     <br>
-                    <div class="form-group row g-0">
+                    <div class="row g-0">
                         <div class="col-6">
                             <input class="form-control border-0" type="text" name="subdomain" placeholder="Subdomain"
                                 [class.is-invalid]="userAuthForm.get('subdomain').invalid && submitted"
@@ -45,7 +45,19 @@
                             *ngIf="userAuthForm.get('subdomain').errors?.required">Subdomain is required</small>
                     </div>
                     <br>
-                    <button class="btn btn-primary btn-sm" type="submit" name="submit">Connect</button>
+                    <ng-container *ngIf="connect">
+                        <button class="btn btn-primary btn-sm btn-connect" type="submit" name="submit">Connect</button>
+                    </ng-container>
+                    <ng-container *ngIf="load">
+                        <div class="spinner-border text-primary" role="status">
+                        </div>
+                    </ng-container>
+                    <div *ngIf="isError" class="error-div container alert alert-danger d-flex align-items-center" role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                        <div>
+                            {{error}}
+                        </div>
+                      </div>
                 </form>
             </div>
         </div>

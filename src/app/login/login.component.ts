@@ -13,6 +13,9 @@ export class LoginComponent implements OnInit {
   userAuthForm: FormGroup;
   submitted: Boolean = false;
   error: any;
+  connect:Boolean = true;
+  load:Boolean = false;
+  isError:Boolean = false;
 
   data: any[] = []
 
@@ -24,6 +27,9 @@ export class LoginComponent implements OnInit {
       password: ["", Validators.required],
       subdomain: ["", Validators.required]
     });
+    this.connect = true;
+    this.load = false;
+    this.isError = false;
   }
   setEmailValidator() {
     this.userAuthForm.get('email').setValidators(Validators.email);
@@ -42,16 +48,23 @@ export class LoginComponent implements OnInit {
     if (this.userAuthForm.invalid) {
       return
     }
-    this._loginService.login(this.userAuthForm.value.username, this.userAuthForm.value.password).subscribe(
+
+    this.connect = false;
+    this.load = true;
+    this.isError = false;
+    this._loginService.login(this.userAuthForm.value.email, this.userAuthForm.value.password, this.userAuthForm.value.subdomain).subscribe(
       data => {
       this.data = data;
-      this.router.navigate(['/dashboard'])
+      this.connect = true;
+      this.load = false;
+      this.isError = false;
+      this.router.navigate(['viewer/'], {state: {data: this.data}})
     },
       error => {
-        console.log(error);
-        this.error = error.statusText
-        console.log(this.error)
+        this.error = JSON.stringify(error.error.error);
+        this.connect = false;
+        this.load = false;
+        this.isError = true;
       });
-    console.log("Success")
   }
 }

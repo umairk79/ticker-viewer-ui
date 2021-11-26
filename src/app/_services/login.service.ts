@@ -9,16 +9,14 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  login(email: any, password: any): Observable<any[]> {
-    let body = { email: email, password: password };
+  login(email: any, password: any, subdomain: any): Observable<any[]> {
+    let body = { data: {email: email, password: password, subdomain: subdomain }};
     let bodyString = JSON.stringify(body); // Stringify payload
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'my-auth-token'
       })
     };
-    console.log(bodyString);
-    return this.http.post<any[]>('http://127.0.0.1:8000/login/', bodyString, httpOptions);
+    return this.http.post<any[]>('http://127.0.0.1:8003/connect/', bodyString, httpOptions);
   }
 }
