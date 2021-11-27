@@ -1,6 +1,6 @@
 <nav class="navbar navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand">
             <img src="https://lh6.googleusercontent.com/WxzAxztf7veVm9RrssPd0nEsGY3Orjq1J7x0kb8O5vmP1DptuzTpIzy2-Uddyd-kfE8DKezPOGeJEvAE1mR7f05O2N2AGBGrLpn6s3hPUS2NIQ5ekZHWSuPQqijflieWvV-uSG99"
                 alt="" width="150" height="70">
         </a>
@@ -40,7 +40,7 @@
                                   <tr>
                                     <td>{{this.datePipe.transform(ticket.created_at, 'MMM d, y, h:mm:ss a')}}</td>
                                     <td>{{this.datePipe.transform(ticket.updated_at, 'MMM d, y, h:mm:ss a')}}</td>
-                                    <td class="text-center"><button type="button" class="btn btn-outline-info btn-sm">View Ticket</button></td>
+                                    <td class="text-center"><button type="button" class="btn btn-outline-secondary btn-sm" (click)="viewTicket(i)">View Ticket</button></td>
                                   </tr>
                                 </tbody>
                               </table>

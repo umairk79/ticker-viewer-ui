@@ -10,12 +10,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ViewerComponent } from './viewer/viewer.component';
+import { TicketComponent } from './ticket/ticket.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ViewerComponent
+    ViewerComponent,
+    TicketComponent
   ],
   imports: [
     BrowserModule,

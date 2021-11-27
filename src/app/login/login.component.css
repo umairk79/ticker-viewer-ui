@@ -43,11 +43,11 @@
 }
 
 .domain:-ms-input-placeholder { /* Internet Explorer 10-11 */
-	color: red;
+	color: black !important;
 }
 
 .domain::-ms-input-placeholder { /* Microsoft Edge */
-	color: red;
+	color: black !important;
 }
 
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../_services/login.service';
 import { Router } from "@angular/router"
+import { Tickets } from '../_model/tickets';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   load:Boolean = false;
   isError:Boolean = false;
 
-  data: any[] = []
+  data: Tickets;
 
   constructor(private formBuilder: FormBuilder, private _loginService: LoginService, private router: Router) { }
 
@@ -65,6 +66,9 @@ export class LoginComponent implements OnInit {
       this.connect = true;
       this.load = false;
       this.isError = false;
+      if (typeof (Storage) !== 'undefined') {
+        sessionStorage.setItem('tickets', JSON.stringify(this.data["tickets"]));
+      }
       this.router.navigate(['tickets/'], {state: {data: this.data}})
     },
       error => {
@@ -75,3 +79,4 @@ export class LoginComponent implements OnInit {
       });
   }
 }
+
