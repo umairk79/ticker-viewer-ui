@@ -43,6 +43,13 @@ export class LoginComponent implements OnInit {
     this.userAuthForm.get('subdomain').setValidators(Validators.required);
   }
 
+  tryAgain(){
+    this.connect = true;
+    this.load = false;
+    this.isError = false;
+    this.submitted = false;
+  }
+
   onSubmit() {
     this.submitted = true;
     if (this.userAuthForm.invalid) {
@@ -58,7 +65,7 @@ export class LoginComponent implements OnInit {
       this.connect = true;
       this.load = false;
       this.isError = false;
-      this.router.navigate(['viewer/'], {state: {data: this.data}})
+      this.router.navigate(['tickets/'], {state: {data: this.data}})
     },
       error => {
         this.error = JSON.stringify(error.error.error);

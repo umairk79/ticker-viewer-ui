@@ -52,12 +52,17 @@
                         <div class="spinner-border text-primary" role="status">
                         </div>
                     </ng-container>
-                    <div *ngIf="isError" class="error-div container alert alert-danger d-flex align-items-center" role="alert">
-                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                    <div *ngIf="isError" class="error-div container alert alert-danger d-flex align-items-center"
+                        role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                            <use xlink:href="#exclamation-triangle-fill" />
+                        </svg>
                         <div>
                             {{error}}
                         </div>
-                      </div>
+                        &nbsp; &nbsp;
+                        <a class ='btn' style="cursor:pointer" (click)="tryAgain();" class="alert-link">Please try again</a>
+                    </div>
                 </form>
             </div>
         </div>

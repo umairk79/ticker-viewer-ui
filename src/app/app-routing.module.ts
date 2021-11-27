@@ -5,7 +5,7 @@ import { ViewerComponent } from './viewer/viewer.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'viewer', component: ViewerComponent },
+  { path: 'tickets', component: ViewerComponent },
 ];
 
 @NgModule({
