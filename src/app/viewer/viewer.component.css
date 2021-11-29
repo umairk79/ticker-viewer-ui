@@ -15,7 +15,7 @@
 }
 
 .card-body{
-    max-height: 40em !important;
+    max-height: 32em !important;
     overflow: auto;
 }
 

@@ -1,3 +1,6 @@
+/**
+ * Interface for field realted to a single ticket.
+ */
 export interface Ticket {
     "id": String,
     "assignee_id": String,

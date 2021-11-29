@@ -1,8 +1,7 @@
 <nav class="navbar navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand">
-            <img src="https://lh6.googleusercontent.com/WxzAxztf7veVm9RrssPd0nEsGY3Orjq1J7x0kb8O5vmP1DptuzTpIzy2-Uddyd-kfE8DKezPOGeJEvAE1mR7f05O2N2AGBGrLpn6s3hPUS2NIQ5ekZHWSuPQqijflieWvV-uSG99"
-                alt="" width="150" height="70">
+            <img src="./../../assets/logo.png" alt="" width="150" height="70">
         </a>
     </div>
 </nav>
@@ -31,32 +30,38 @@
                             <table class="table table-hover table-bordered align-middle table-responsive">
                                 <thead>
                                     <tr>
-                                      <th scope="col">Created At</th>
-                                      <th scope="col">Last Modified</th>
-                                      <th scope="col"></th>
+                                        <th scope="col">Created At</th>
+                                        <th scope="col">Last Modified</th>
+                                        <th scope="col"></th>
                                     </tr>
-                                  </thead>
+                                </thead>
                                 <tbody>
-                                  <tr>
-                                    <td>{{this.datePipe.transform(ticket.created_at, 'MMM d, y, h:mm:ss a')}}</td>
-                                    <td>{{this.datePipe.transform(ticket.updated_at, 'MMM d, y, h:mm:ss a')}}</td>
-                                    <td class="text-center"><button type="button" class="btn btn-outline-secondary btn-sm" (click)="viewTicket(i)">View Ticket</button></td>
-                                  </tr>
+                                    <tr>
+                                        <td>{{this.datePipe.transform(ticket.created_at, 'MMM d, y, h:mm:ss a')}}</td>
+                                        <td>{{this.datePipe.transform(ticket.updated_at, 'MMM d, y, h:mm:ss a')}}</td>
+                                        <td class="text-center"><button type="button"
+                                                class="btn btn-outline-secondary btn-sm" (click)="viewTicket(i)">View
+                                                Ticket</button></td>
+                                    </tr>
                                 </tbody>
-                              </table>
+                            </table>
                         </div>
                     </div>
                 </div>
             </ng-container>
-            <div class="row  align-items-center">
-                <div class="col-md-6">
+
+            </div>
+            <div class="card-footer">
+                <div class="row align-items-center">
+                <div class="col-md-5">
                     <div class="d-flex justify-content-start align-self-center"><span>Showing {{(page - 1) * pageSize +
                             1}} - {{math.min(page * pageSize, tickets.length)}} out of {{tickets.length}} tickets</span>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <ngb-pagination [collectionSize]="tickets.length" [(page)]="page" [pageSize]="pageSize"
-                        aria-label="Default pagination" size="sm" class="d-flex justify-content-end pager">
+                <div class="col-md-7">
+                    <ngb-pagination (pageChange)="loadPage($event)" [collectionSize]="ticketCount" [(page)]="page"
+                        [pageSize]="pageSize" aria-label="Default pagination" size="sm"
+                        class="d-flex justify-content-end pager" [maxSize]="4" [boundaryLinks]="true">
                     </ngb-pagination>
                 </div>
             </div>

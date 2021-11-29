@@ -9,7 +9,7 @@
     width: 50%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 7%;
+    margin-top: 5%;
     display: block;
     border: 1px solid #dddddd;
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.16), 0 8px 11px rgba(0, 0, 0, 0.28); 
@@ -26,7 +26,10 @@
 }
 
 .card .card-badge {
-position:absolute;
+    position:absolute;
+    text-align: center;
+    width: 6em;
+    height: 2.5em;
     top:-10px;
     left:-20px;
     padding:5px;
@@ -49,6 +52,7 @@ position:absolute;
 
 input[type="text"]:disabled{
     background-color:rgb(247, 247, 247);
+
 }
 
 .alert-secondary{

@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  backendURL: "http://127.0.0.1:8003/",
-  backendEndpoint: "connect/"
+  backendURL: "http://127.0.0.1:8000/",
+  backendEndpoint: "tickets/",
+  pageSize: 25
 };
 
 /*
