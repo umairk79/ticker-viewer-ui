@@ -1,0 +1,70 @@
+<nav class="navbar navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand">
+            <img src="./../../assets/logo.png" alt="" width="150" height="70">
+        </a>
+    </div>
+</nav>
+<div class="container">
+    <div class="viewer-container card">
+        <h2 class="card-header text-center">Your Tickets</h2>
+        <div class="accordion card-body" id="accordionExample">
+            <ng-container
+                *ngFor="let ticket of tickets |  slice: (page-1) * pageSize : page * pageSize; let i = index;">
+                <div class="accordion-item">
+                    <h6 class="accordion-header" [attr.id]="'heading'+i">
+                        <button class="accordion-button collapsed btn-sm" type="button" data-bs-toggle="collapse"
+                            [attr.data-bs-target]="'#collapse'+i" aria-expanded="false" aria-controls="'collapse' + i">
+                            <div class="col-md-1">
+                                <span class="badge " [ngClass]="{'bg-danger': ticket.status=='open', 
+                                'bg-primary': ticket.status=='pending', 
+                                'bg-secondary': ticket.status=='solved'}">{{ticket.id}}
+                                </span>
+                            </div>
+                            {{ticket.subject}}
+                        </button>
+                    </h6>
+                    <div [attr.id]="'collapse' + i" class="accordion-collapse collapse"
+                        [attr.aria-labelledby]="'heading'+i" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <table class="table table-hover table-bordered align-middle table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Created At</th>
+                                        <th scope="col">Last Modified</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{this.datePipe.transform(ticket.created_at, 'MMM d, y, h:mm:ss a')}}</td>
+                                        <td>{{this.datePipe.transform(ticket.updated_at, 'MMM d, y, h:mm:ss a')}}</td>
+                                        <td class="text-center"><button type="button"
+                                                class="btn btn-outline-secondary btn-sm" (click)="viewTicket(i)">View
+                                                Ticket</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+
+            </div>
+            <div class="card-footer">
+                <div class="row align-items-center">
+                <div class="col-md-5">
+                    <div class="d-flex justify-content-start align-self-center"><span>Showing {{(page - 1) * pageSize +
+                            1}} - {{math.min(page * pageSize, tickets.length)}} out of {{tickets.length}} tickets</span>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <ngb-pagination (pageChange)="loadPage($event)" [collectionSize]="ticketCount" [(page)]="page"
+                        [pageSize]="pageSize" aria-label="Default pagination" size="sm"
+                        class="d-flex justify-content-end pager" [maxSize]="4" [boundaryLinks]="true">
+                    </ngb-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

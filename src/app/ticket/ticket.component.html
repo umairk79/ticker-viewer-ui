@@ -1,0 +1,78 @@
+<nav class="navbar navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand">
+            <img src="./../../assets/logo.png"
+                alt="" width="150" height="70">
+        </a>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="ticket">
+        <div class="card">
+            <h4 class="card-header text-center">Ticket # {{ticket.id}}</h4>
+            <div class="card-body text-center">
+                <h5 class="card-title">{{ticket.subject}}</h5>
+                <div class="alert alert-secondary" role="alert">
+                    {{ticket.description}}
+                </div>
+                <div class="row g-2">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingInputValue"
+                                value="{{ticket.requester_id}}" disabled=true>
+                            <label for="floatingInputValue">Requester ID</label>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingInputValue"
+                                value="{{ticket.assignee_id}}" disabled=true>
+                            <label for="floatingInputValue">Assignee ID</label>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row g-2">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingInputValue"
+                                value="{{this.datePipe.transform(ticket.created_at, 'MMM d, y, h:mm:ss a')}}"
+                                disabled=true>
+                            <label for="floatingInputValue">Created At</label>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingInputValue"
+                                value="{{this.datePipe.transform(ticket.created_at, 'MMM d, y, h:mm:ss a')}}"
+                                disabled=true>
+                            <label for="floatingInputValue">Last Modified</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer" *ngIf="ticket.tags.length > 0">
+                <div class="row  align-items-center">
+                    <div class="col-md-10  align-items-center ">
+                        <div class="d-flex justify-content-start align-self-center">
+                            Tags: &nbsp;
+                            <ng-container *ngFor="let tag of ticket.tags">
+                                <span class="badge bg-primary">{{tag}}</span> &nbsp;
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="d-flex justify-content-end">
+                            <a href="tickets?page={{page}}" class="btn btn-secondary btn-sm active" role="button"
+                                aria-pressed="true">Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-badge" [ngClass]="{'badge-open': ticket.status=='open', 
+            'badge-pending': ticket.status=='pending', 
+            'badge-solved': ticket.status=='solved'}">{{ticket.status}}</div>
+        </div>
+    </div>
+</div>

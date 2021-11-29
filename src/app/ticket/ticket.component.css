@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+.container{
+    font-size: smaller !important;
+    font-family: 'Open Sans',serif;
+}
+
+.ticket {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    display: block;
+    border: 1px solid #dddddd;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.16), 0 8px 11px rgba(0, 0, 0, 0.28); 
+}
+  
+.card-body{
+    max-height: 30em !important;
+    overflow-y: scroll;
+
+}
+.card {
+    position:relative;
+    border: none;
+}
+
+.card .card-badge {
+    position:absolute;
+    text-align: center;
+    width: 6em;
+    height: 2.5em;
+    top:-10px;
+    left:-20px;
+    padding:5px;
+    color:white;
+    transform:rotate(-20deg);
+    box-shadow: 0px -4px 12px rgba(0, 0, 0, 0.16), 0 -2px 11px rgba(0, 0, 0, 0.28);  
+}
+
+.badge-open{
+    background-color: #DC3444;
+}
+
+.badge-pending{
+    background-color: #0C6EFD;
+}
+
+.badge-solved{
+    background-color: #6C757D;
+}
+
+input[type="text"]:disabled{
+    background-color:rgb(247, 247, 247);
+
+}
+
+.alert-secondary{
+    background-color:rgb(247, 247, 247);
+}
+
+.card-header{
+    background-color:rgb(228, 228, 228) !important;
+}
+
+.card-footer{
+    background-color:rgb(228, 228, 228) !important;
+}
